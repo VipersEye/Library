@@ -1,5 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+    --main-color: #55ac98;
+}
+
+html {
+    font-size: 100%;
+}
+
 body {
     margin: 0;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -19,8 +31,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo {
-    
+    background: url('./images/text.jpg') no-repeat center;
+    background-size: cover;
 }
+
+.logo__letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
+    width: 100%;
+
+    background-color: rgba(85, 172, 152, 0.9);
+
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 7rem;
+    font-weight: 700;
+    color: #fff;
+}
+
 
 .aside {
     grid-column: -2 / -1;
