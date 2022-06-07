@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 18rem 1fr 22rem;
+    grid-template-rows: 13rem 1fr;
+
+    height: 100vh;
+}
+
+.logo {
+    
+}
+
+.aside {
+    grid-column: -2 / -1;
+    grid-row: 1/ -1;
+}
+
+.logo, .header, .nav, .books, .aside {
+    border: 1px solid #000;
+}
+
