@@ -20,11 +20,11 @@
 <!-- header -->
 
     <header class="header">
-        <h1 class="header__name">Bookstore</h1>
+        <h1><a class="header__name" href="">Bookstore</a></h1>
         <div class="header__btns">
             <button class="header__btn" type="button">newest</button>
             <div class="division"></div>
-            <button class="header__btn" type="button">popularity</button>
+            <button class="header__btn active" type="button">popularity</button>
         </div>
         <input class="header__search" type="search" name="search" id="search" placeholder="Search all books">
     </header>
@@ -32,7 +32,13 @@
 <!-- nav -->
     
     <nav class="nav">
-
+        <div class="nav__block">
+            <h3 class="nav__header">browse</h3>
+            <button class="nav__btn nav__btn_browse" type="button">now reading</button>
+            <button class="nav__btn nav__btn_browse active" type="button">bookstore</button>
+            <button class="nav__btn nav__btn_browse" type="button">collection</button>
+            <button class="nav__btn nav__btn_browse" type="button">forum</button>
+        </div>
     </nav>
 
 <!-- books -->
