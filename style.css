@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav {
     display: grid;
     grid-auto-rows: min-content;
-    row-gap: 4rem;
+    row-gap: 3.5rem;
 
     padding: 2rem 0 0 1.5rem;
 
@@ -276,6 +276,36 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav__btn_circle:nth-of-type(3)::before {
     border: 0.3rem solid #6ee440;
+}
+
+.nav__btn_bookmark {
+    margin-bottom: 1rem;
+}
+
+.nav__btn_bookmark:last-child {
+    margin-bottom: 0;
+}
+
+.nav__book-name {
+    margin-bottom: 0.2rem;
+    
+    font-size: 1.2rem;
+    color: #fff;
+
+    transition: color 0.2s linear;
+}
+
+.nav__btn_bookmark.active .nav__book-name {
+    color: var(--main-color);
+}
+
+.nav__book-author {
+    font-size: 1rem;
+    color: #91918b;
+}
+
+.nav__btn_bookmark.active .nav__book-author {
+    color: #a9e6e6;
 }
 
 .aside {
