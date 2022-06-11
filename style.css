@@ -347,3 +347,41 @@ h1, h2, h3, h4, h5, h6 {
     color: #dcdbdb;
 }
 
+.aside__progress-info {
+    padding: 1rem 2.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+        
+    background-color: #484843;
+}
+
+.aside__percent {
+    padding: 0.7rem;
+    
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+
+    background-color: #5c5c5c;
+    border-radius: 0.4rem;
+}
+
+.aside__progress {
+    flex: 1;
+
+    height: 0.5rem;
+    
+    appearance: none;
+    border-radius: 0.2rem;
+    overflow: hidden;
+}
+
+.aside__progress::-webkit-progress-bar {    
+    background-color: #5c5c5a;
+}
+
+.aside__progress::-webkit-progress-value {
+    background-color: #fff;
+}
