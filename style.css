@@ -157,8 +157,8 @@ h1, h2, h3, h4, h5, h6 {
 /* nav =========================== */
 
 .nav {
-    display: grid;
-    grid-auto-rows: min-content;
+    display: flex;
+    flex-direction: column;
     row-gap: 3.5rem;
 
     padding: 2rem 0 0 1.5rem;
