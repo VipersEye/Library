@@ -24,10 +24,38 @@ h1, h2, h3, h4, h5, h6 {
 
 .container {
     display: grid;
-    grid-template-columns: 18rem 1fr 22rem;
+    grid-template-columns: 18rem 1fr 25rem;
     grid-template-rows: 12rem 1fr;
 
     height: 100vh;
+}
+
+.input {
+    appearance: none;
+
+    padding: 0;
+    padding-bottom: 0.5rem;
+
+    color: #000;
+    font-size: 1.2rem;
+    font-family: inherit;
+
+    border: 0;
+    border-bottom: 3px solid #dcdbdb;
+    background-color: transparent;
+    outline: none;
+
+    transition: border 0.2s linear;  
+}
+
+.input:focus {
+    outline: 0.2rem solid var(--main-color);
+    outline-offset: 0.4rem;
+    border-color: var(--main-color);
+}
+
+.input::placeholder {
+    color: #dcdbdb;
 }
 
 /* logo ========================== */
@@ -119,39 +147,12 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(30deg);
 }
 
-.header__search {
-    appearance: none;
-
-    padding: 0;
-    padding-bottom: 0.5rem;
+.input_search {
     width: 15rem;
-
-    font-size: 1.2rem;
-    font-family: inherit;
-    color: #000;
-
-    border: 0;
-    border-bottom: 3px solid #c0c7c5;
-    outline: none;
-
-    transition: border 0.2s linear;
 }
 
-.header__search:focus {
-    outline: 0.2rem solid var(--main-color);
-    outline-offset: 0.4rem;
-}
-
-.header__search::placeholder {
-    color: #c0c7c5;
-}
-
-.header__search::-webkit-search-cancel-button {
+.input_search::-webkit-search-cancel-button {
     display: none;
-}
-
-.header__search:focus {
-    border-color: var(--main-color);
 }
 
 /* nav =========================== */
@@ -384,4 +385,31 @@ h1, h2, h3, h4, h5, h6 {
 
 .aside__progress::-webkit-progress-value {
     background-color: #fff;
+}
+
+.aside__comment {
+    padding: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    background-color: #5c5c5a;
+}
+
+.aside__avatar {
+    width: 3rem;
+    height: 3rem;
+    
+    border-radius: 50%;
+
+    transition: border 0.2s linear;
+}
+
+.aside__avatar:hover {
+    border: 0.3rem solid var(--main-color);
+}
+
+.input_aside {
+    width: 100%;
 }
