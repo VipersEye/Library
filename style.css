@@ -387,7 +387,116 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fff;
 }
 
+/* ============================= */
+
+.aside__discussion {
+    flex: 1;
+
+    padding: 0 2.5rem;
+
+    background-color: #dcdbdb;
+
+    overflow-y: auto;
+}
+
+.aside__discussion::-webkit-scrollbar {
+    width: 0.9rem;
+}
+
+.aside__discussion::-webkit-scrollbar-thumb {
+    display: block;
+    
+    background-color: #2b2b2b;
+    border-radius: 0.6rem;
+}
+
+.aside__discussion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 2.5rem;
+    padding: 2.5rem 0 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    font-size: 1rem;
+    color: #848482;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    background-color: #dcdbdb;
+    border-bottom: 3px solid #acacac;
+}
+
+.aside__select {
+    display: grid;
+    align-items: center;
+    grid-template-areas: 'select';
+}
+
+.aside__select::after, 
+.aside__select-inner {
+    grid-area: select;
+}
+
+.aside__select::after {
+    content: '';
+
+    width: 0.9rem;
+    height: 0.7rem;
+    justify-self: end;
+
+    background-color: #acacac;
+    cursor: pointer;
+    
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+}
+
+.aside__select-inner {
+    appearance: none;
+
+    padding-right: 2rem;
+
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    text-transform: uppercase;
+    text-align: right;
+
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    position: relative;
+}
+
+.aside__comment-block {
+    margin-bottom: 1.5rem;
+
+    position: relative;
+}
+
 .aside__comment {
+    display: flex;
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+}
+
+.aside__comment-text {
+    margin: 0;
+    padding: 0;
+
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+/* ============================== */
+
+.aside__commenting {
     padding: 2.5rem;
 
     display: flex;
@@ -412,4 +521,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .input_aside {
     width: 100%;
+
+    color: #fff;
 }
