@@ -9,6 +9,67 @@
 </head>
 <body>
 
+<!-- svg sprite -->
+
+<svg style="display: none;">
+    <symbol id="upload" viewBox="122.5 52.4 455 455.1">
+        <g>
+            <path d="m525 507.5h-350c-13.926 0-27.277-5.5312-37.125-15.375-9.8438-9.8477-15.375-23.199-15.375-37.125v-148.75c0-6.2539 3.3359-12.031 8.75-15.156s12.086-3.125 17.5 0 8.75 8.9023 8.75 15.156v148.75c0 4.6406 1.8438 9.0938 5.125 12.375s7.7344 5.125 12.375 5.125h350c4.6406 0 9.0938-1.8438 12.375-5.125s5.125-7.7344 5.125-12.375v-148.75c0-6.2539 3.3359-12.031 8.75-15.156s12.086-3.125 17.5 0 8.75 8.9023 8.75 15.156v148.75c0 13.926-5.5312 27.277-15.375 37.125-9.8477 9.8438-23.199 15.375-37.125 15.375z"/>
+            <path d="m437.5 175c-4.6523 0.027344-9.1211-1.8008-12.426-5.0742l-75.074-75.25-75.074 75.25c-4.4414 4.4375-10.91 6.1719-16.973 4.5469-6.0664-1.625-10.801-6.3594-12.426-12.426-1.625-6.0625 0.10938-12.531 4.5469-16.973l87.5-87.5c3.2852-3.3125 7.7578-5.1758 12.426-5.1758s9.1406 1.8633 12.426 5.1758l87.5 87.5c3.3125 3.2852 5.1758 7.7578 5.1758 12.426s-1.8633 9.1406-5.1758 12.426c-3.3047 3.2734-7.7734 5.1016-12.426 5.0742z"/>
+            <path d="m350 411.25c-4.6406 0-9.0938-1.8438-12.375-5.125s-5.125-7.7344-5.125-12.375v-315c0-6.2539 3.3359-12.031 8.75-15.156s12.086-3.125 17.5 0 8.75 8.9023 8.75 15.156v315c0 4.6406-1.8438 9.0938-5.125 12.375s-7.7344 5.125-12.375 5.125z"/>
+           </g>
+    </symbol>
+
+    <symbol id="plus" viewBox="142.8 72.8 414.39 414.39">
+        <g>
+            <path d="m350 72.801c-12.371 0-22.398 10.027-22.398 22.398v162.4h-162.4c-12.371 0-22.398 10.027-22.398 22.398s10.027 22.398 22.398 22.398h162.4v162.4c0 12.371 10.027 22.398 22.398 22.398s22.398-10.027 22.398-22.398v-162.4h162.4c12.371 0 22.398-10.027 22.398-22.398s-10.027-22.398-22.398-22.398h-162.4v-162.4c0-12.371-10.027-22.398-22.398-22.398z"/>
+        </g>
+    </symbol>
+
+    <symbol id="bookmark" viewBox="170.8 33.57 358.4 492.87">
+        <g>
+            <path d="m186.02 526.37c-4.1758-0.39453-8.0547-2.3359-10.871-5.4453s-4.3711-7.1602-4.3516-11.355v-436.8c0-21.426 17.773-39.199 39.199-39.199h280c21.426 0 39.199 17.773 39.199 39.199v436.8c0.011719 4.1211-1.4883 8.1055-4.2227 11.191-2.7344 3.0859-6.5039 5.0586-10.598 5.5469-4.0938 0.48437-8.2266-0.55469-11.605-2.9141l-152.77-105.35-152.77 105.35c-3.2617 2.2891-7.2344 3.3438-11.203 2.9766zm18.375-48.824 135.98-93.801c2.8203-1.9727 6.1836-3.0312 9.625-3.0312s6.8047 1.0586 9.625 3.0312l135.98 93.801v-404.77c0-3.3945-2.207-5.6016-5.6016-5.6016h-280c-3.3945 0-5.6016 2.207-5.6016 5.6016z"/>
+        </g>
+    </symbol>
+
+    <symbol id="book" viewBox="97.77 33.72 503.8 492.57">
+        <g>
+            <path d="m561.9 33.719c-72.727 10.578-142.15 33.059-202.98 75.371v376.2c63.473-33.719 130.91-56.199 202.98-60.164zm-442.31 29.754-21.816-2.6445v398.68c88.594 3.3047 172.56 28.43 251.9 66.777 80-38.348 163.3-63.473 251.9-66.777v-398.68l-21.156 2.6445v370.91c0 4.6289-3.9688 9.2578-9.2578 9.2578-79.34 1.9844-147.44 27.77-216.2 65.453-5.9492 3.9688-12.562-1.3242-17.852-3.9688-64.793-35.703-134.21-59.504-208.27-61.488-5.2891 0-9.2578-4.6289-9.2578-9.2578v-370.91zm18.512-29.754v391.41c72.066 3.9688 139.5 26.445 202.31 60.164v-376.2c-60.164-42.312-130.25-64.793-202.31-75.371z"/>
+        </g>
+    </symbol>
+
+    <symbol id="play" viewBox="167.14 37.49 365.73 485.02">
+        <g>
+            <path d="m178.34 522.51c-1.8047 0-3.6133-0.4375-5.2578-1.3086-3.6523-1.9414-5.9414-5.7461-5.9414-9.8906v-462.62c0-4.1367 2.2852-7.9414 5.9414-9.8906 3.6562-1.9375 8.0859-1.7148 11.52 0.59766l343.32 231.31c3.0898 2.082 4.9453 5.5664 4.9453 9.2891s-1.8555 7.207-4.9453 9.2891l-343.33 231.31c-1.8789 1.2734-4.0664 1.9141-6.2539 1.9141z"/>
+        </g>
+    </symbol>
+
+    <symbol id="info" viewBox="245 0 210 560">
+        <g>
+            <path d="m350 105c28 0 52.5-24.5 52.5-52.5s-24.5-52.5-52.5-52.5-52.5 24.5-52.5 52.5 24.5 52.5 52.5 52.5zm35 385v-315h-140v70h70v245h-70v70h210v-70z"/>
+        </g>
+    </symbol>
+
+    <symbol id="star" viewBox="157.63 96.92 384.74 366.15">
+        <g>
+            <path transform="matrix(5.8333 0 0 5.8333 70 0)" d="m48 17.044 7.6842 23.648h24.865l-20.115 14.616 7.6828 23.648-20.117-14.615-20.117 14.615 7.6848-23.648-20.117-14.616h24.865zm0 0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="5"/>
+        </g>
+    </symbol>
+
+    <symbol id="commentary" viewBox="260.4 196 179.2 166.88">
+        <g>
+            <path d="m319.76 362.88-8.9609-4.4805v-28h-50.398l-0.003906-134.4h179.2v134.4h-71.117zm-48.16-43.68h50.398v28.559l43.121-28.559h63.277v-112h-156.8zm112-22.398h-89.602v-11.199h89.602zm22.398-28h-112v-11.199h112zm0-28h-112v-11.199h112z"/>
+        </g>
+    </symbol>
+
+    <symbol id="search" viewBox="83.33 13.33 533.33 533.33">
+        <g>
+            <path d="m83.336 224.94c0 116.86 94.738 211.61 211.61 211.61 44.695 0 86.152-13.867 120.31-37.527l139.8 139.8c10.453 10.453 27.512 10.453 37.969 0l15.801-15.801c10.453-10.453 10.453-27.512 0-37.969l-139.8-139.8c23.652-34.16 37.527-75.613 37.527-120.31 0-116.86-94.738-211.61-211.61-211.61-116.87 0.007813-211.61 94.746-211.61 211.61zm52.145 0c0-88.066 71.395-159.46 159.46-159.46s159.46 71.395 159.46 159.46c-0.003906 88.066-71.391 159.47-159.46 159.47-88.062 0-159.46-71.395-159.46-159.47z" fill-rule="evenodd"/>
+        </g>
+    </symbol>
+
+</svg>
+
 <div class="container">
 
 <!-- logo -->
@@ -66,9 +127,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/1984 _ George Orwell.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/1984 _ George Orwell.jpg" alt="">
             </div>
             <div class="books__name">1984</div>
             <div class="books__author">by George Orwell</div>
@@ -77,9 +136,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/A Storm of Swords _ George R. R. Martin.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/A Storm of Swords _ George R. R. Martin.jpg" alt="">
             </div>
             <div class="books__name">A Storm of Swords</div>
             <div class="books__author">by George R. R. Martin</div>
@@ -89,9 +146,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/All Quiet on the Western Front _ Erich Maria Remarque.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/All Quiet on the Western Front _ Erich Maria Remarque.jpg" alt="">
             </div>
             <div class="books__name">All Quiet on the Western Front</div>
             <div class="books__author">by Erich Maria Remarque</div>
@@ -101,9 +156,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/Faust _ Johann Wolfgang von Goethe.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/Faust _ Johann Wolfgang von Goethe.jpg" alt="">
             </div>
             <div class="books__name">Faust</div>
             <div class="books__author">by Johann Wolfgang von Goethe</div>
@@ -113,9 +166,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/For Whom the Bell Tolls _ Ernest Hemingway.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/For Whom the Bell Tolls _ Ernest Hemingway.jpg" alt="">
             </div>
             <div class="books__name">For Whom the Bell Tolls</div>
             <div class="books__author">by Ernest Hemingway</div>
@@ -125,9 +176,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/Moby-Dick _ Herman Melville.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/Moby-Dick _ Herman Melville.jpg" alt="">
             </div>
             <div class="books__name">Moby-Dick</div>
             <div class="books__author">by Herman Melville</div>
@@ -137,9 +186,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/Sword of Destiny _ Andrzej Sapkowski.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/Sword of Destiny _ Andrzej Sapkowski.jpg" alt="">
             </div>
             <div class="books__name">Sword of Destiny</div>
             <div class="books__author">by Andrzej Sapkowski</div>
@@ -149,9 +196,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/The Count of Monte Cristo _ Alexandre Dumas.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/The Count of Monte Cristo _ Alexandre Dumas.jpg" alt="">
             </div>
             <div class="books__name">The Count of Monte Cristo</div>
             <div class="books__author">by Alexandre Dumas</div>
@@ -161,9 +206,7 @@
 
         <div class="books__card">
             <div class="books__img-container">
-                <a href="">
-                    <img class="books__img" src="./images/covers/The Two Towers _ J.R.R. Tolkien.jpg" alt="">
-                </a>
+                <img class="books__img" src="./images/covers/The Two Towers _ J.R.R. Tolkien.jpg" alt="">
             </div>
             <div class="books__name">The Two Towers</div>
             <div class="books__author">by J.R.R. Tolkien</div>
