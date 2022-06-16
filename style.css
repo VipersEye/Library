@@ -147,8 +147,35 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(30deg);
 }
 
+.header__input {
+    display: grid;
+    grid-template-areas: 'search';
+    align-items: center;
+}
+
 .input_search {
+    padding-right: 2rem;
     width: 15rem;
+
+    grid-area: search;
+}
+
+.icon_search {
+    grid-area: search;
+    justify-self: end;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    fill: #dcdbdb;
+
+    transform: rotateY(180deg);
+
+    transition: fill 0.2s linear;
+}
+
+.input_search:focus + .icon_search {
+    fill: var(--main-color)
 }
 
 .input_search::-webkit-search-cancel-button {
