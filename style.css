@@ -232,7 +232,7 @@ h1, h2, h3, h4, h5, h6 {
 
     overflow: hidden;
 
-    transition: background 0.2s linear, color 0.2s linear;
+    transition: background 0.1s linear, color 0.1s linear;
 }
 
 .nav__btn_browse.active {
@@ -255,7 +255,7 @@ h1, h2, h3, h4, h5, h6 {
 
     background-color: transparent;
 
-    transition: background 0.2s linear;
+    transition: background 0.1s linear;
 }
 
 .nav__btn_browse.active::before {

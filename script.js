@@ -1,13 +1,11 @@
-let myLibrary = [];
+let blockNav = document.querySelectorAll('.nav__block');
 
-function Book(title, author, genre, pages) {
-    this.title = title;
-    this.author = author;
-    this.genre =  genre;
-    this.pages = pages;
-    this.read = false;
-}
+blockNav.forEach(block => {
+    block.addEventListener('click', toggleBtnNavStatus);
+});
 
-function addBookToLibrary() {
-    
+function toggleBtnNavStatus(e) {
+    let btnNavActive = this.querySelector('.active');
+    btnNavActive.classList.remove('active');
+    e.target.classList.add('active');
 }
