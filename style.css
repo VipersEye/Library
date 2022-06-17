@@ -608,6 +608,16 @@ h1, h2, h3, h4, h5, h6 {
 .aside__discussion::-webkit-scrollbar-thumb {
     display: block;
     
-    background-color: #2b2b2b;
+    background-color: #9a9a9a;
     border-radius: 0.6rem;
+}
+
+.books::-webkit-scrollbar-thumb:hover,
+.aside__discussion::-webkit-scrollbar-thumb:hover {
+    background-color: #505050; 
+}
+
+.books::-webkit-scrollbar-thumb:active,
+.aside__discussion::-webkit-scrollbar-thumb:active {
+    background-color: #2b2b2b;
 }
