@@ -349,11 +349,11 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
 }
 
-.books__card:hover .books__img-container {
-    background-color: rgba(0, 0, 0, 0.7);
+.books__img-container:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.books__card:hover .books__img {
+.books__img-container:hover .books__img {
     transform: scale(1.2);
     filter: blur(0.1rem);
 }
@@ -382,8 +382,107 @@ h1, h2, h3, h4, h5, h6 {
 
 .books__buttons {
     display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2 ,auto);
+    align-content: space-between;
+    justify-content: space-between;
+    align-items: center;
 
-    padding: 1rem;
+    padding: 2rem;
+    height: 100%;
+
+    opacity: 0;
+
+    transition: opacity 0.4s ease-in;
+}
+
+.books__img-container:hover .books__buttons {
+    opacity: 1;
+}
+
+.books__button {    
+    padding: 0;
+    width: 3.5rem;
+    height: 3.5rem;
+
+    display: grid;
+    place-content: center;
+
+    border: 0.3rem solid #fff;
+    border-radius: 50%;
+    background-color: transparent;
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: background 0.2s linear;
+}
+
+.books__button:hover {
+    background-color: #fff;
+}
+
+.books__button:hover .books__icon {
+    fill: #000;
+}
+
+.books__button_info {
+    grid-column: 1 / -1;
+    justify-self: end;
+}
+
+.books__button_read {
+    grid-template-areas: 'read';
+    
+    width: 5rem;
+    height: 5rem;
+
+    background-color: #fff;
+}
+
+.books__button_read:hover {
+    background-color: var(--main-color);
+}
+
+.books__button_read:hover .books__icon_read {
+    fill: #fff;
+}
+
+.books__button_read:hover .books__icon_play {
+    fill: var(--main-color);
+}
+
+.books__icon {
+    width: 2rem;
+    height: 2rem;
+
+    fill: #fff;
+}
+
+.books__icon_read {
+    grid-area: read;
+    
+    width: 2.5rem;
+    height: 2.5rem;
+
+    fill: var(--main-color);
+}
+
+.books__icon_play {
+    grid-area: read;
+    place-self: center;
+
+    width: 1.2rem;
+    height: 1.2rem;
+
+    position: relative;
+    top: -0.1rem;
+    left: 0.1rem;
+}
+
+.books__icon_bookmark {
+    position: relative;
+    top: -0.8rem;
 }
 
 .books__name {
