@@ -6,6 +6,8 @@ blockNav.forEach(block => {
 
 function toggleBtnNavStatus(e) {
     let btnNavActive = this.querySelector('.active');
-    btnNavActive.classList.remove('active');
-    e.target.classList.add('active');
+    if (e.target.classList.contains('nav__btn')) {
+        btnNavActive.classList.remove('active');
+        e.target.classList.add('active');
+    }
 }
