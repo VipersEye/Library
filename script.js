@@ -24,6 +24,9 @@ function toggleBtnNavStatus(e) {
     if (e.target.classList.contains('nav__btn')) {
         btnNavActive.classList.remove('active');
         e.target.classList.add('active');
+    } else if (e.target.parentElement.classList.contains('nav__btn')) {
+        btnNavActive.classList.remove('active');
+        e.target.parentElement.classList.add('active');
     }
 }
 
