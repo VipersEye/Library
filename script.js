@@ -12,7 +12,7 @@ btnsHeader.forEach(btn => {
 
 document.addEventListener('keypress', (e)=>{
     if (e.key === 'Enter' && inputAside === document.activeElement && inputAside.value) {
-        let authorAvatar = document.querySelector('.aside__commenting .aside__avatar');
+        let authorAvatar = document.querySelector('.aside__commenting .avatar_aside');
         let avatarSrc = authorAvatar.getAttribute('src');
         addComment(inputAside.value, avatarSrc);
         inputAside.value = '';
@@ -43,7 +43,7 @@ function addComment(text, imgSrc) {
     let commentText = newComment.querySelector('.aside__comment-text');
     commentText.textContent = text;
 
-    let commentAvatar = newComment.querySelector('.aside__avatar');
+    let commentAvatar = newComment.querySelector('.avatar_aside');
     commentAvatar.setAttribute('src', imgSrc);
 
     let lastCommentBlock = document.querySelector('.aside__comment-block:last-child');
