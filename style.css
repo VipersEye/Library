@@ -353,10 +353,12 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
 }
 
+.books__card_active .books__img-container,
 .books__img-container:hover {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+.books__card_active .books__img,
 .books__img-container:hover .books__img {
     transform: scale(1.2);
     filter: blur(0.1rem);
@@ -400,6 +402,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity 0.4s ease-in;
 }
 
+.books__card_active .books__buttons,
 .books__img-container:hover .books__buttons {
     opacity: 1;
 }
@@ -433,6 +436,10 @@ h1, h2, h3, h4, h5, h6 {
 .books__button_info {
     grid-column: 1 / -1;
     justify-self: end;
+}
+
+.books__button_info_active {
+    background-color: #fff;
 }
 
 .books__button_read {
@@ -487,6 +494,10 @@ h1, h2, h3, h4, h5, h6 {
 .books__icon_bookmark {
     position: relative;
     top: -0.8rem;
+}
+
+.books__button_info_active .books__icon_info {
+    fill: #000;
 }
 
 .books__name {
@@ -731,15 +742,26 @@ h1, h2, h3, h4, h5, h6 {
 /* books info popup =================== */
 
 .books__info {
+    display: block;
+    
     position: absolute;
     top: 0;
     left: calc(100% + 2.5rem);
-    z-index: 1000;
+    z-index: -100;
 
     width: 26rem;
 
     background-color: rgba(0, 0, 0, 0.9);
     border-radius: 0.7rem;
+    opacity: 0;
+
+    transition: opacity 0.2s linear;
+}
+
+.books__info_active {
+    z-index: 100;
+    
+    opacity: 1;
 }
 
 .books__info::after {

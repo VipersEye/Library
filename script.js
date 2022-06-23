@@ -1,6 +1,9 @@
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
+let bookCards = document.querySelectorAll('.books__card');
+
+// event listeners
 
 blockNav.forEach(block => {
     block.addEventListener('click', toggleBtnNavStatus);
@@ -18,6 +21,20 @@ document.addEventListener('keypress', (e)=>{
         inputAside.value = '';
     }
 });
+
+bookCards.forEach(card => {
+    card.addEventListener('click', (e)=>{
+        let targetClassList = e.target.classList;
+        if (
+            targetClassList.contains('books__button_info') || 
+            targetClassList.contains('books__icon_info') ||
+            e.target.parentElement.classList.contains('books__icon_info')) {
+                displayBookInfo(e.currentTarget);
+        }
+    });
+});
+
+// functions
 
 function toggleBtnNavStatus(e) {
     let btnNavActive = this.querySelector('.active');
@@ -49,4 +66,13 @@ function addComment(text, imgSrc) {
     let lastCommentBlock = document.querySelector('.aside__comment-block:last-child');
 
     lastCommentBlock.appendChild(newComment);
+}
+
+function displayBookInfo(bookCard) {
+    let bookInfo = bookCard.querySelector('.books__info');
+    let btnBookInfo = bookCard.querySelector('.books__button_info');
+
+    bookCard.classList.toggle('books__card_active');
+    btnBookInfo.classList.toggle('books__button_info_active'); 
+    bookInfo.classList.toggle('books__info_active');
 }
