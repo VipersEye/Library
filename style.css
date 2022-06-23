@@ -398,6 +398,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100%;
 
     opacity: 0;
+    visibility: hidden;
 
     transition: opacity 0.4s ease-in;
 }
@@ -405,6 +406,7 @@ h1, h2, h3, h4, h5, h6 {
 .books__card_active .books__buttons,
 .books__img-container:hover .books__buttons {
     opacity: 1;
+    visibility: visible;
 }
 
 .books__button {    
