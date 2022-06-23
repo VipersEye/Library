@@ -32,6 +32,8 @@ bookCards.forEach(card => {
                 displayBookInfo(e.currentTarget);
         }
     });
+    let bookImageContainer = card.querySelector('.books__img-container');
+    bookImageContainer.addEventListener('mousemove', calculateTransitionOrigin);
 });
 
 // functions
@@ -75,4 +77,13 @@ function displayBookInfo(bookCard) {
     bookCard.classList.toggle('books__card_active');
     btnBookInfo.classList.toggle('books__button_info_active'); 
     bookInfo.classList.toggle('books__info_active');
+}
+
+function calculateTransitionOrigin(e) {
+    let bookImageContainer = e.currentTarget;
+    let bookImage = bookImageContainer.querySelector('.books__img');
+    let rect = bookImageContainer.getBoundingClientRect();
+    let originX = e.clientX - rect.left;
+    let originY = e.clientY - rect.top;
+    bookImage.style.transformOrigin = `${originX}px ${originY}px`;
 }
