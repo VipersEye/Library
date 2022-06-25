@@ -90,6 +90,8 @@ let myLibrary = [
     },
 ];
 
+displayBookCards(myLibrary);
+
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
@@ -178,4 +180,22 @@ function calculateTransitionOrigin(e) {
     let originX = e.clientX - rect.left;
     let originY = e.clientY - rect.top;
     bookImage.style.transformOrigin = `${originX}px ${originY}px`;
+}
+
+function displayBookCards(library) {
+    let booksContainer = document.querySelector('.books');
+    let cardTemplate = document.querySelector('#template_card');
+
+    for (let book of library) {
+        let bookCard = cardTemplate.content.cloneNode(true).querySelector('.books__card');
+        let bookTitle = bookCard.querySelector('.books__name');
+        let bookAuthor = bookCard.querySelector('.books__author');
+        let bookCover = bookCard.querySelector('.books__img');
+
+        bookTitle.textContent = book.title;
+        bookAuthor.textContent = book.author;
+        bookCover.setAttribute('src', `./images/covers/${book.title} _ ${book.author}.jpg`);
+
+        booksContainer.appendChild(bookCard);
+    } 
 }
