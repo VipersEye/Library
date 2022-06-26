@@ -1,5 +1,7 @@
 let myLibrary = [
+    
     {
+        id: 0,
         title: '1984',
         author: 'George Orwell',
         pages: 227,
@@ -10,6 +12,7 @@ let myLibrary = [
     },
 
     {
+        id: 1,
         title: 'A Storm of Swords',
         author: 'George R. R. Martin',
         pages: 1216,
@@ -20,6 +23,7 @@ let myLibrary = [
     },
 
     {
+        id: 2,
         title: 'All Quiet on the Western Front',
         author: 'Erich Maria Remarque',
         pages: 304,
@@ -30,6 +34,7 @@ let myLibrary = [
     },
 
     {
+        id: 3,
         title: 'Faust',
         author: 'Johann Wolfgang von Goethe',
         pages: 488,
@@ -40,6 +45,7 @@ let myLibrary = [
     },
 
     {
+        id: 4,
         title: 'For Whom the Bell Tolls',
         author: 'Ernest Hemingway',
         pages: 576,
@@ -50,6 +56,7 @@ let myLibrary = [
     },
 
     {
+        id: 5,
         title: 'Moby-Dick',
         author: 'Herman Melville',
         pages: 504,
@@ -60,6 +67,7 @@ let myLibrary = [
     },
 
     {
+        id: 6,
         title: 'Sword of Destiny',
         author: 'Andrzej Sapkowski',
         pages: 384,
@@ -70,6 +78,7 @@ let myLibrary = [
     },
 
     {
+        id: 7,
         title: 'The Count of Monte Cristo',
         author: 'Alexandre Dumas',
         pages: 1276,
@@ -80,6 +89,7 @@ let myLibrary = [
     },
 
     {
+        id: 8,
         title: 'The Two Towers',
         author: 'J.R.R. Tolkien',
         pages: 1209,
@@ -90,12 +100,9 @@ let myLibrary = [
     },
 ];
 
-displayBookCards(myLibrary);
-
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
-let bookCards = document.querySelectorAll('.books__card');
 
 // event listeners
 
@@ -116,19 +123,7 @@ document.addEventListener('keypress', (e)=>{
     }
 });
 
-bookCards.forEach(card => {
-    card.addEventListener('click', (e)=>{
-        let targetClassList = e.target.classList;
-        if (
-            targetClassList.contains('books__button_info') || 
-            targetClassList.contains('books__icon_info') ||
-            e.target.parentElement.classList.contains('books__icon_info')) {
-                displayBookInfo(e.currentTarget);
-        }
-    });
-    let bookImageContainer = card.querySelector('.books__img-container');
-    bookImageContainer.addEventListener('mousemove', calculateTransitionOrigin);
-});
+displayBookCards(myLibrary);
 
 // functions
 
@@ -164,15 +159,6 @@ function addComment(text, imgSrc) {
     lastCommentBlock.appendChild(newComment);
 }
 
-function displayBookInfo(bookCard) {
-    let bookInfo = bookCard.querySelector('.books__info');
-    let btnBookInfo = bookCard.querySelector('.books__button_info');
-
-    bookCard.classList.toggle('books__card_active');
-    btnBookInfo.classList.toggle('books__button_info_active'); 
-    bookInfo.classList.toggle('books__info_active');
-}
-
 function calculateTransitionOrigin(e) {
     let bookImageContainer = e.currentTarget;
     let bookImage = bookImageContainer.querySelector('.books__img');
@@ -191,10 +177,22 @@ function displayBookCards(library) {
         let bookTitle = bookCard.querySelector('.books__name');
         let bookAuthor = bookCard.querySelector('.books__author');
         let bookCover = bookCard.querySelector('.books__img');
-
+        
+        bookCard.setAttribute('book_id', book.id);
         bookTitle.textContent = book.title;
         bookAuthor.textContent = book.author;
         bookCover.setAttribute('src', `./images/covers/${book.title} _ ${book.author}.jpg`);
+
+        bookCard.addEventListener('click', (e)=>{
+            let targetClassList = e.target.classList;
+            if (
+                targetClassList.contains('books__button_info') || 
+                targetClassList.contains('books__icon_info') ||
+                e.target.parentElement.classList.contains('books__icon_info')) {
+            }
+        });
+        let bookImageContainer = bookCard.querySelector('.books__img-container');
+        bookImageContainer.addEventListener('mousemove', calculateTransitionOrigin);
 
         booksContainer.appendChild(bookCard);
     } 
