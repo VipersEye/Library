@@ -209,17 +209,29 @@ function displayBookCards(library) {
 }
 
 function displayBookInfo(bookCard) {
+    if (bookCard.querySelector('.books__info') === null) {
+        let bookInfoTemplate = document.querySelector('#template_info');
+        let bookInfo = bookInfoTemplate.content.cloneNode(true).querySelector('.books__info');
+        let bookId = bookCard.getAttribute('book_id');
+        let book = myLibrary[bookId];
+        
+        let bookInfoSummary = bookInfo.querySelector('.books__summary-text');
+        bookInfoSummary.textContent = book.summary;
+
+        let bookRatingStars = bookInfo.querySelectorAll('.icon_star');
+        for (let i = 0; i < book.rating; i++) {
+        bookRatingStars[i].classList.add('icon_star_rate');
+        }
+        if (book['user rating']) {
+            for (let i = 0; i < book['user rating']; i++) {
+                bookRatingStars[i].classList.add('icon_star_active');
+            }
+        }
+
+        bookCard.appendChild(bookInfo);
+    }
     let btnBookInfo = bookCard.querySelector('.books__button_info');    
     bookCard.classList.toggle('books__card_active');
     btnBookInfo.classList.toggle('books__button_info_active'); 
-
-    let bookInfoTemplate = document.querySelector('#template_info');
-    let bookInfo = bookInfoTemplate.content.cloneNode(true).querySelector('.books__info');
-    let bookId = bookCard.getAttribute('book_id');
-    
-    let bookInfoSummary = bookInfo.querySelector('.books__summary-text');
-    bookInfoSummary.textContent = myLibrary[bookId].summary;
-    bookCard.appendChild(bookInfo);
-    let info = bookCard.querySelector('.books__info');
-    info.classList.toggle('books__info_active');
+    bookCard.querySelector('.books__info').classList.toggle('books__info_active');
 }
