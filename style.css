@@ -748,7 +748,6 @@ h1, h2, h3, h4, h5, h6 {
     
     position: absolute;
     top: 0;
-    left: calc(100% + 2.5rem);
     z-index: -100;
 
     width: 26rem;
@@ -760,26 +759,45 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity 0.2s linear;
 }
 
+.books__info_right {
+    left: calc(100% + 2.5rem);
+}
+
+.books__info_left {
+    right: 8rem;
+}
+
 .books__info_active {
     z-index: 1000000;
     
     opacity: 1;
 }
 
-.books__info::after {
+.books__info_right::after,
+.books__info_left::after {
     content: '';
 
     display: block;
 
     position: absolute;
-    right: 100%;
     top: 2rem;
-
+    
     width: 3rem;
     height: 3rem;
 
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+.books__info_right::after {
+    right: 100%;
+
     clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+}
+
+.books__info_left::after {
+    left: 100%;
+
+    clip-path: polygon(0 0, 0% 100%, 50% 50%);
 }
 
 .books__summary {
