@@ -193,11 +193,7 @@ function displayBookCards(library) {
         bookCover.setAttribute('src', `./images/covers/${book.title} _ ${book.author}.jpg`);
 
         bookCard.addEventListener('click', (e)=>{
-            let targetClassList = e.target.classList;
-            if (
-            targetClassList.contains('books__button_info') || 
-            targetClassList.contains('books__icon_info') ||
-            e.target.parentElement.classList.contains('books__icon_info')) {
+            if (e.target.closest('.books__button_info')) {
                 displayBookInfo(e.currentTarget);
             }
         });
@@ -232,20 +228,9 @@ function displayBookInfo(bookCard) {
         let btnsStars = starsContainer.querySelectorAll('.books__star');
         btnsStars.forEach(btn => {
             btn.addEventListener('mouseenter', hoverRatingStar);
-            btn.addEventListener('mouseleave', removeHoverRatingStar);
         });
 
-        starsContainer.addEventListener('mouseleave', ()=> {
-            if (book['user rating']) {
-                for (let i = 0; i < book['user rating']; i++) {
-                    bookRatingStars[i].classList.add('icon_star_active');
-                }
-            } else {
-                for (let i = 0; i < 5; i++) {
-                    bookRatingStars[i].classList.remove('icon_star_active');
-                }
-            }
-        });
+        starsContainer.addEventListener('mouseleave', displayUserRating);
 
         chooseInfoPosition(bookCard, bookInfo);        
 
@@ -277,16 +262,29 @@ function hoverRatingStar(e) {
     let starsContainer = e.target.parentElement;
     let stars = starsContainer.querySelectorAll('.icon_star');
     let rating = e.target.getAttribute('rating');
-    for(let i = 0; i < rating; i++) {
+
+    for (let i = 0; i < rating; i++) {
         stars[i].classList.add('icon_star_active');
+    }
+
+    for (let i = +rating; i < 5; i++) {
+        stars[i].classList.remove('icon_star_active');
     }
 }
 
-function removeHoverRatingStar(e) {
-    let starsContainer = e.target.parentElement;
-    let stars = starsContainer.querySelectorAll('.icon_star');
-    let rating = e.target.getAttribute('rating');
-    for(let i = rating - 1; i < stars.length; i++) {
-        stars[i].classList.remove('icon_star_active');
+function displayUserRating(e) {
+    let bookId = e.target.closest('.books__card').getAttribute('book_id');
+    let book = myLibrary[bookId];
+    let currentUserRating = book['user rating'];
+    let bookRatingStars = e.target.querySelectorAll('.icon_star');
+
+    if (currentUserRating) {
+        for (let i = 0; i < currentUserRating; i++) {
+            bookRatingStars[i].classList.add('icon_star_active');
+        }
+    } else {
+        for (let i = 0; i < 5; i++) {
+            bookRatingStars[i].classList.remove('icon_star_active');
+        }
     }
 }
