@@ -195,6 +195,8 @@ function displayBookCards(library) {
         bookCard.addEventListener('click', (e)=>{
             if (e.target.closest('.books__button_info')) {
                 displayBookInfo(e.currentTarget);
+            } else if (e.target.closest('.books__star')) {
+                addUserRating(e);
             }
         });
         let bookImageContainer = bookCard.querySelector('.books__img-container');
@@ -269,6 +271,19 @@ function hoverRatingStar(e) {
 
     for (let i = +rating; i < 5; i++) {
         stars[i].classList.remove('icon_star_active');
+    }
+}
+
+function addUserRating(e) {
+    let bookId = e.currentTarget.getAttribute('book_id');
+    let book = myLibrary[bookId];
+    let newUserRating = e.target.closest('.books__star').getAttribute('rating');
+    let currentUserRating = book['user rating'];
+
+    if (currentUserRating === newUserRating) {
+        book['user rating'] = null;
+    } else {
+        book['user rating'] = newUserRating;
     }
 }
 
