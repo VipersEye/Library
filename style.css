@@ -877,15 +877,16 @@ h1, h2, h3, h4, h5, h6 {
 .books__rating {
     flex: 1;
 
+    margin: -0.7rem;
     padding: 0 1.5rem;
 
     display: flex;
-    gap: 0.7rem;
+    justify-content: center;
 }
 
 .books__star {
     margin: 0;
-    padding: 0;
+    padding: 0 0.35rem;
 
     border: none;
     background-color: transparent;
@@ -919,7 +920,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: stroke 0.15s linear, fill 0.15s linear;      
 }
 
-.icon_star:hover {
+.books__star:hover .icon_star {
     fill: #daa520;
     stroke: #daa520;
 }
