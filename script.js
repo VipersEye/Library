@@ -220,7 +220,7 @@ function displayBookInfo(bookCard) {
 
         let bookRatingStars = bookInfo.querySelectorAll('.icon_star');
         for (let i = 0; i < book.rating; i++) {
-        bookRatingStars[i].classList.add('icon_star_rate');
+            bookRatingStars[i].classList.add('icon_star_rate');
         }
         if (book['user rating']) {
             for (let i = 0; i < book['user rating']; i++) {
@@ -228,7 +228,26 @@ function displayBookInfo(bookCard) {
             }
         }
 
-        chooseInfoPosition(bookCard, bookInfo)        
+        let starsContainer = bookInfo.querySelector('.books__rating');
+        let btnsStars = starsContainer.querySelectorAll('.books__star');
+        btnsStars.forEach(btn => {
+            btn.addEventListener('mouseenter', hoverRatingStar);
+            btn.addEventListener('mouseleave', removeHoverRatingStar);
+        });
+
+        starsContainer.addEventListener('mouseleave', ()=> {
+            if (book['user rating']) {
+                for (let i = 0; i < book['user rating']; i++) {
+                    bookRatingStars[i].classList.add('icon_star_active');
+                }
+            } else {
+                for (let i = 0; i < 5; i++) {
+                    bookRatingStars[i].classList.remove('icon_star_active');
+                }
+            }
+        });
+
+        chooseInfoPosition(bookCard, bookInfo);        
 
         bookCard.appendChild(bookInfo);
     } else {
@@ -251,5 +270,23 @@ function chooseInfoPosition(bookCard, bookInfo) {
     } else {
         bookInfo.classList.add('books__info_left');
         bookInfo.classList.remove('books__info_right')
+    }
+}
+
+function hoverRatingStar(e) {
+    let starsContainer = e.target.parentElement;
+    let stars = starsContainer.querySelectorAll('.icon_star');
+    let rating = e.target.getAttribute('rating');
+    for(let i = 0; i < rating; i++) {
+        stars[i].classList.add('icon_star_active');
+    }
+}
+
+function removeHoverRatingStar(e) {
+    let starsContainer = e.target.parentElement;
+    let stars = starsContainer.querySelectorAll('.icon_star');
+    let rating = e.target.getAttribute('rating');
+    for(let i = rating - 1; i < stars.length; i++) {
+        stars[i].classList.remove('icon_star_active');
     }
 }
