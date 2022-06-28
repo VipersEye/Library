@@ -228,10 +228,28 @@ function displayBookInfo(bookCard) {
             }
         }
 
+        chooseInfoPosition(bookCard, bookInfo)        
+
         bookCard.appendChild(bookInfo);
+    } else {
+        chooseInfoPosition(bookCard, bookCard.querySelector('.books__info'));
     }
     let btnBookInfo = bookCard.querySelector('.books__button_info');    
     bookCard.classList.toggle('books__card_active');
     btnBookInfo.classList.toggle('books__button_info_active'); 
     bookCard.querySelector('.books__info').classList.toggle('books__info_active');
+}
+
+function chooseInfoPosition(bookCard, bookInfo) {
+    let bookCardPosition = bookCard.offsetLeft;
+    let bookInfoWidth = bookCard.offsetWidth;
+    let containerWidth = bookCard.parentElement.offsetWidth;
+    
+    if (bookCardPosition + bookInfoWidth + 300 < containerWidth) {
+        bookInfo.classList.add('books__info_right');
+        bookInfo.classList.remove('books__info_left');
+    } else {
+        bookInfo.classList.add('books__info_left');
+        bookInfo.classList.remove('books__info_right')
+    }
 }
