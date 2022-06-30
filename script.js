@@ -1,3 +1,5 @@
+// variables
+
 let myLibrary = [
     
     {
@@ -117,13 +119,12 @@ let myLibrary = [
         recommends: [],
     },
 ];
+let currentLibrary = [...myLibrary];
 
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
-let blockHeaderBtns = document.querySelector('.header__btns');
 let searchInput = document.querySelector('.input_search');
-let currentLibrary = [...myLibrary];
 
 // event listeners
 
@@ -133,14 +134,6 @@ blockNav.forEach(block => {
 
 btnsHeader.forEach(btn => {
     btn.addEventListener('click', toggleBtnHeaderStatus);
-    if (btn.classList.contains('active')){
-        if(btn.classList.contains('header__btn_newest')) {
-            filterBooks('newest');
-        }
-        else {
-            filterBooks('popularity');
-        }
-    }
 });
 
 document.addEventListener('keypress', (e)=>{
@@ -152,16 +145,11 @@ document.addEventListener('keypress', (e)=>{
     }
 });
 
-blockHeaderBtns.addEventListener('click', (e) => {
-    if (e.target.classList.contains('header__btn_newest')) {
-        filterBooks('newest');
-    }
-    else if (e.target.classList.contains('header__btn_popularity')) {
-        filterBooks('popularity');
-    }
-});
-
 searchInput.addEventListener('input', searchBooks);
+
+// calls
+
+displayBookCards(currentLibrary);
 
 // functions
 
@@ -180,6 +168,7 @@ function toggleBtnHeaderStatus(e) {
     let btnHeaderActive = document.querySelector('.header__btn.active');
     btnHeaderActive.classList.remove('active');
     e.target.classList.add('active');
+    displayBookCards(currentLibrary);
 }
 
 function addComment(text, imgSrc) {
@@ -210,7 +199,14 @@ function displayBookCards(library) {
     let booksContainer = document.querySelector('.books');
     let cardTemplate = document.querySelector('#template_card');
 
-    for (let book of library) {
+    removeBookCards();
+
+    let activeBtnFilter = document.querySelector('.header__btn.active');
+    let filter = activeBtnFilter.classList.contains('header__btn_newest') ? 'year' : 'rating';
+
+    let sortedLibrary = sortBooks(library, filter);
+
+    for (let book of sortedLibrary) {
         let bookCard = cardTemplate.content.cloneNode(true).querySelector('.books__card');
         let bookTitle = bookCard.querySelector('.books__name');
         let bookAuthor = bookCard.querySelector('.books__author');
@@ -333,31 +329,15 @@ function displayUserRating(e) {
     }
 }
 
-function filterBooks(filter) {
-    currentLibrary = [...myLibrary];
-    removeBookCards();
-    switch (filter) {
-        case 'newest':
-            currentLibrary.sort( (bookOne, bookTwo) => {
-                if (bookOne.year > bookTwo.year) return -1;
-                else if (bookOne.year < bookTwo.year) return 1;
-                else if (bookOne.year === bookTwo.year) {
-                    return bookOne.title < bookTwo.title ? -1 : 1;
-                }
-            } );
-            displayBookCards(currentLibrary);
-            break;
-        case 'popularity':
-            currentLibrary.sort( (bookOne, bookTwo) => {
-                if (bookOne.rating > bookTwo.rating) return -1;
-                else if (bookOne.rating < bookTwo.rating) return 1;
-                else if (bookOne.rating === bookTwo.rating) {
-                    return bookOne.title < bookTwo.title ? -1 : 1;
-                }
-            } );
-            displayBookCards(currentLibrary);
-            break;
-    }
+function sortBooks(library, filter) {
+    library.sort( (bookOne, bookTwo) => {
+        if (bookOne[filter] > bookTwo[filter]) return -1;
+        else if (bookOne[filter] < bookTwo[filter]) return 1;
+        else if (bookOne[filter] === bookTwo[filter]) {
+            return bookOne.title < bookTwo.title ? -1 : 1;
+        }
+    } );
+    return library;
 }
 
 function removeBookCards() {
@@ -371,8 +351,6 @@ function removeBookCards() {
 
 function searchBooks(e) {
     let searchingValue = e.target.value;
-    let searchingResult = [...currentLibrary]
-    searchingResult = searchingResult.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
-    removeBookCards();
-    displayBookCards(searchingResult);
+    currentLibrary = myLibrary.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
+    displayBookCards(currentLibrary);
 }
