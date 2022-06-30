@@ -122,6 +122,8 @@ let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
 let blockHeaderBtns = document.querySelector('.header__btns');
+let searchInput = document.querySelector('.input_search');
+let currentLibrary = [...myLibrary];
 
 // event listeners
 
@@ -158,6 +160,8 @@ blockHeaderBtns.addEventListener('click', (e) => {
         filterBooks('popularity');
     }
 });
+
+searchInput.addEventListener('input', searchBooks);
 
 // functions
 
@@ -330,28 +334,28 @@ function displayUserRating(e) {
 }
 
 function filterBooks(filter) {
-    let filteredLibrary = [...myLibrary];
+    currentLibrary = [...myLibrary];
     removeBookCards();
     switch (filter) {
         case 'newest':
-            filteredLibrary.sort( (bookOne, bookTwo) => {
+            currentLibrary.sort( (bookOne, bookTwo) => {
                 if (bookOne.year > bookTwo.year) return -1;
                 else if (bookOne.year < bookTwo.year) return 1;
                 else if (bookOne.year === bookTwo.year) {
                     return bookOne.title < bookTwo.title ? -1 : 1;
                 }
             } );
-            displayBookCards(filteredLibrary);
+            displayBookCards(currentLibrary);
             break;
         case 'popularity':
-            filteredLibrary.sort( (bookOne, bookTwo) => {
+            currentLibrary.sort( (bookOne, bookTwo) => {
                 if (bookOne.rating > bookTwo.rating) return -1;
                 else if (bookOne.rating < bookTwo.rating) return 1;
                 else if (bookOne.rating === bookTwo.rating) {
                     return bookOne.title < bookTwo.title ? -1 : 1;
                 }
             } );
-            displayBookCards(filteredLibrary);
+            displayBookCards(currentLibrary);
             break;
     }
 }
@@ -363,4 +367,12 @@ function removeBookCards() {
     for (let i = 0; i < allBookCards.length; i++) {
         booksContainer.removeChild(allBookCards[i]);
     }
+}
+
+function searchBooks(e) {
+    let searchingValue = e.target.value;
+    let searchingResult = [...currentLibrary]
+    searchingResult = searchingResult.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
+    removeBookCards();
+    displayBookCards(searchingResult);
 }
