@@ -119,7 +119,11 @@ let myLibrary = [
         recommends: [],
     },
 ];
-let currentLibrary = [...myLibrary];
+let currentUser = {
+    id: 0,
+    name: 'Nik',
+    library: [myLibrary[0], myLibrary[1], myLibrary[4], myLibrary[7]],
+}
 
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
@@ -148,19 +152,27 @@ document.addEventListener('keypress', (e)=>{
 searchInput.addEventListener('input', searchBooks);
 
 // calls
-
-displayBookCards(currentLibrary);
+let currentLibrary = [...myLibrary];
+displayBookCards();
 
 // functions
 
 function toggleBtnNavStatus(e) {
     let btnNavActive = this.querySelector('.active');
-    if (e.target.classList.contains('nav__btn')) {
+    if (e.target.closest('.nav__btn')) {
         btnNavActive.classList.remove('active');
         e.target.classList.add('active');
-    } else if (e.target.parentElement.classList.contains('nav__btn')) {
-        btnNavActive.classList.remove('active');
-        e.target.parentElement.classList.add('active');
+
+        switch(true) {
+            case (Boolean(e.target.closest('#btn-bookstore'))):
+                currentLibrary = [...myLibrary];
+                displayBookCards();
+                break;
+            case (Boolean(e.target.closest('#btn-collection'))):
+                currentLibrary = [...currentUser.library];
+                displayBookCards()
+                break;
+        }
     }
 }
 
@@ -168,7 +180,7 @@ function toggleBtnHeaderStatus(e) {
     let btnHeaderActive = document.querySelector('.header__btn.active');
     btnHeaderActive.classList.remove('active');
     e.target.classList.add('active');
-    displayBookCards(currentLibrary);
+    displayBookCards();
 }
 
 function addComment(text, imgSrc) {
@@ -195,7 +207,7 @@ function calculateTransitionOrigin(e) {
     bookImage.style.transformOrigin = `${originX}px ${originY}px`;
 }
 
-function displayBookCards(library) {
+function displayBookCards() {
     let booksContainer = document.querySelector('.books');
     let cardTemplate = document.querySelector('#template_card');
 
@@ -204,9 +216,9 @@ function displayBookCards(library) {
     let activeBtnFilter = document.querySelector('.header__btn.active');
     let filter = activeBtnFilter.classList.contains('header__btn_newest') ? 'year' : 'rating';
 
-    let sortedLibrary = sortBooks(library, filter);
+    sortBooks(filter);
 
-    for (let book of sortedLibrary) {
+    for (let book of currentLibrary) {
         let bookCard = cardTemplate.content.cloneNode(true).querySelector('.books__card');
         let bookTitle = bookCard.querySelector('.books__name');
         let bookAuthor = bookCard.querySelector('.books__author');
@@ -329,15 +341,14 @@ function displayUserRating(e) {
     }
 }
 
-function sortBooks(library, filter) {
-    library.sort( (bookOne, bookTwo) => {
+function sortBooks(filter) {
+    currentLibrary.sort( (bookOne, bookTwo) => {
         if (bookOne[filter] > bookTwo[filter]) return -1;
         else if (bookOne[filter] < bookTwo[filter]) return 1;
         else if (bookOne[filter] === bookTwo[filter]) {
             return bookOne.title < bookTwo.title ? -1 : 1;
         }
     } );
-    return library;
 }
 
 function removeBookCards() {
@@ -351,6 +362,7 @@ function removeBookCards() {
 
 function searchBooks(e) {
     let searchingValue = e.target.value;
-    currentLibrary = myLibrary.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
-    displayBookCards(currentLibrary);
+    let library = document.querySelector('.nav__btn_browse.active').getAttribute('id') === 'btn-collection' ? [...currentUser.library] : [...myLibrary];
+    currentLibrary = library.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
+    displayBookCards();
 }
