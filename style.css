@@ -467,7 +467,7 @@ h1, h2, h3, h4, h5, h6 {
     fill: var(--main-color);
 }
 
-.books__button_add.active {
+.books__button_checked {
     background-color: #fff;
 }
 
