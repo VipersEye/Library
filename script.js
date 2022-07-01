@@ -124,6 +124,7 @@ let currentUser = {
     name: 'Nik',
     library: [],
 }
+let currentLibrary;
 
 let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
@@ -152,7 +153,7 @@ document.addEventListener('keypress', (e)=>{
 searchInput.addEventListener('input', searchBooks);
 
 // calls
-let currentLibrary = [...mainLibrary];
+identifyCurrentLibrary();
 displayBookCards();
 
 // functions
@@ -208,6 +209,7 @@ function calculateTransitionOrigin(e) {
 }
 
 function displayBookCards() {
+
     let booksContainer = document.querySelector('.books');
     let cardTemplate = document.querySelector('#template_card');
 
@@ -374,8 +376,8 @@ function removeBookCards() {
 
 function searchBooks(e) {
     let searchingValue = e.target.value;
-    let library = document.querySelector('.nav__btn_browse.active').getAttribute('id') === 'btn-collection' ? [...currentUser.library] : [...mainLibrary];
-    currentLibrary = library.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
+    identifyCurrentLibrary();
+    currentLibrary = currentLibrary.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
     displayBookCards();
 }
 
@@ -406,4 +408,10 @@ function removeBookFromCollection(e) {
     let book = mainLibrary.find( book => book.id === +bookId );
     book['in collection'] = false;
     currentUser.library = currentUser.library.filter( book => book.id !== +bookId );
+    identifyCurrentLibrary();
+    displayBookCards();
+}
+
+function identifyCurrentLibrary() {
+    currentLibrary = document.querySelector('.nav__btn_browse.active').getAttribute('id') === 'btn-collection' ? [...currentUser.library] : [...mainLibrary];
 }
