@@ -457,12 +457,18 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--main-color);
 }
 
-.books__button_read:hover .books__icon_read {
+.books__button_read:hover 
+.books__icon_read {
     fill: #fff;
 }
 
-.books__button_read:hover .books__icon_play {
+.books__button_read:hover 
+.books__icon_play {
     fill: var(--main-color);
+}
+
+.books__button_add.active {
+    background-color: #fff;
 }
 
 .books__icon {
@@ -491,6 +497,10 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     top: -0.1rem;
     left: 0.1rem;
+}
+
+.books__icon_checked {
+    fill: #000;
 }
 
 .books__icon_bookmark {
