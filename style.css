@@ -262,6 +262,56 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--main-color);
 }
 
+.nav__btn_browse_bookstore {
+    position: relative;
+}
+
+.nav__btn_add {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    z-index: -100;
+
+    padding: 0;
+    margin: 0;
+
+    width: 3rem;
+    height: 3rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition: background 0.2s linear;
+}
+
+.nav__btn_browse.active + .nav__btn_add {
+    z-index: 100;
+}
+
+.nav__btn_add:hover {
+    background-color: #000;
+}
+
+.nav__icon-add {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    fill: #000;
+
+    transition: fill 0.2s linear;
+}
+
+.nav__btn_add:hover .nav__icon-add {
+    fill: #fff;
+}
+
 .nav__btn_circle {
     font-size: 1.3rem;
     

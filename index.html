@@ -107,7 +107,15 @@
         <div class="nav__block">
             <h3 class="nav__header">browse</h3>
             <button id="btn-reading" class="nav__btn nav__btn_browse" type="button">now reading</button>
-            <button id="btn-bookstore" class="nav__btn nav__btn_browse active" type="button">bookstore</button>
+            <div class="nav__btn_browse_bookstore">
+                <button id="btn-bookstore" class="nav__btn nav__btn_browse  active" type="button">bookstore
+                <button class="nav__btn nav__btn_add" type="">
+                    <svg class="nav__icon-add">
+                        <use xlink:href="#plus"></use>
+                    </svg>
+                </button>
+            </div>
+            </button>
             <button id="btn-collection" class="nav__btn nav__btn_browse" type="button">collection</button>
             <button class="nav__btn nav__btn_browse" type="button">forum</button>
         </div>
