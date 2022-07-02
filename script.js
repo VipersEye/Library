@@ -12,6 +12,7 @@ let mainLibrary = [
         rating: 5,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -25,6 +26,7 @@ let mainLibrary = [
         rating: 5,
         'user rating': 4,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -38,6 +40,7 @@ let mainLibrary = [
         rating: 4,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -51,6 +54,7 @@ let mainLibrary = [
         rating: 3,
         'user rating': 4,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -64,6 +68,7 @@ let mainLibrary = [
         rating: 5,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -77,6 +82,7 @@ let mainLibrary = [
         rating: 5,
         'user rating': 2,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -90,6 +96,7 @@ let mainLibrary = [
         rating: 4,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -103,6 +110,7 @@ let mainLibrary = [
         rating: 5,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 
@@ -116,6 +124,7 @@ let mainLibrary = [
         rating: 4,
         'user rating': null,
         'in collection': false,
+        bookmark: false,
         recommends: [],
     },
 ];
@@ -247,6 +256,10 @@ function displayBookCards() {
             } else if (e.target.closest('.books__button_checked')) {
                 toggleBtnAddStyles(e.target);
                 removeBookFromCollection(e);
+            } else if (e.target.closest('.books__button_bookmark')) {
+                toggleBtnBookmarkStyles(e.target);
+            } else if (e.target.closest('.books__button_bookmark_active')) {
+                toggleBtnBookmarkStyles(e.target);
             }
         });
         
@@ -414,4 +427,9 @@ function removeBookFromCollection(e) {
 
 function identifyCurrentLibrary() {
     currentLibrary = document.querySelector('.nav__btn_browse.active').getAttribute('id') === 'btn-collection' ? [...currentUser.library] : [...mainLibrary];
+}
+
+function toggleBtnBookmarkStyles(target) {
+    let btnBookmark = target.closest('.books__button');
+    btnBookmark.classList.toggle('books__button_bookmark_active');
 }

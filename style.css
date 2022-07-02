@@ -514,7 +514,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .books__button_bookmark_active
 .books__icon_bookmark {
-    fill: #c81919;
+    fill: #c81919 !important;
 }
 
 .books__button_info_active .books__icon_info {
