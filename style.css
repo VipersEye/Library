@@ -444,6 +444,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #fff;
 }
 
+.books__button_bookmark_active {
+    background-color: #fff;
+}
+
 .books__button_read {
     grid-template-areas: 'read';
     
@@ -506,6 +510,11 @@ h1, h2, h3, h4, h5, h6 {
 .books__icon_bookmark {
     position: relative;
     top: -0.8rem;
+}
+
+.books__button_bookmark_active
+.books__icon_bookmark {
+    fill: #c81919;
 }
 
 .books__button_info_active .books__icon_info {
