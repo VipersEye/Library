@@ -244,6 +244,10 @@ function displayBookCards() {
             let btnAdd = bookCard.querySelector('.books__button_add');
             toggleBtnAddStyles(btnAdd);
         }
+        if (book.bookmark) {
+            let btnBookmark = bookCard.querySelector('.books__button_bookmark');
+            toggleBtnBookmarkStyles(btnBookmark);
+        }
 
         bookCard.addEventListener('click', (e)=>{
             if (e.target.closest('.books__button_info')) {
@@ -257,10 +261,13 @@ function displayBookCards() {
                 toggleBtnAddStyles(e.target);
                 removeBookFromCollection(e);
             } else if (e.target.closest('.books__button_bookmark')) {
+                if (e.target.classList.contains('books__button_bookmark_active')) {
+                    removeBookmark(e);
+                } else {
+                    addBookmark(e);
+                }
                 toggleBtnBookmarkStyles(e.target);
-            } else if (e.target.closest('.books__button_bookmark_active')) {
-                toggleBtnBookmarkStyles(e.target);
-            }
+            } 
         });
         
         let bookImageContainer = bookCard.querySelector('.books__img-container');
@@ -432,4 +439,16 @@ function identifyCurrentLibrary() {
 function toggleBtnBookmarkStyles(target) {
     let btnBookmark = target.closest('.books__button');
     btnBookmark.classList.toggle('books__button_bookmark_active');
+}
+
+function addBookmark(e) {
+    let bookId = e.target.closest('.books__card').getAttribute('book_id');
+    let book = mainLibrary.find( book => book.id === +bookId );
+    book.bookmark = true;
+}
+
+function removeBookmark(e) {
+    let bookId = e.target.closest('.books__card').getAttribute('book_id');
+    let book = mainLibrary.find( book => book.id === +bookId );
+    book.bookmark = false;
 }
