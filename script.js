@@ -172,24 +172,8 @@ function toggleBtnNavStatus(e) {
     if (e.target.closest('.nav__btn')) {
         btnNavActive.classList.remove('active');
         e.target.closest('.nav__btn').classList.add('active');
-
-        switch(true) {
-            case (Boolean(e.target.closest('#btn-bookstore'))):
-                currentLibrary = [...mainLibrary];
-                displayBookCards();
-                break;
-            case (Boolean(e.target.closest('#btn-collection'))):
-                currentLibrary = [...currentUser.library];
-                displayBookCards()
-                break;
-            case (Boolean(e.target.closest('#btn-reading'))):
-                currentLibrary = [];
-                for (let book of mainLibrary) {
-                    if (book.bookmark) currentLibrary.push(book);
-                }
-                displayBookCards();
-                break;
-        }
+        identifyCurrentLibrary();
+        displayBookCards();
     }
 }
 
