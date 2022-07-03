@@ -139,6 +139,7 @@ let blockNav = document.querySelectorAll('.nav__block');
 let btnsHeader = document.querySelectorAll('.header__btn');
 let inputAside = document.querySelector('.input_aside');
 let searchInput = document.querySelector('.input_search');
+let popupNewBook = document.querySelector('.popup');
 
 // event listeners
 
@@ -161,6 +162,12 @@ document.addEventListener('keypress', (e)=>{
 
 searchInput.addEventListener('input', searchBooks);
 
+popupNewBook.addEventListener('click', (e) => {
+    if (e.target.closest('.popup__btn_close')) {
+        closePopup(e);
+    }
+} );
+
 // calls
 identifyCurrentLibrary();
 displayBookCards();
@@ -170,10 +177,14 @@ displayBookCards();
 function toggleBtnNavStatus(e) {
     let btnNavActive = this.querySelector('.active');
     if (e.target.closest('.nav__btn')) {
-        btnNavActive.classList.remove('active');
-        e.target.closest('.nav__btn').classList.add('active');
-        identifyCurrentLibrary();
-        displayBookCards();
+        if (e.target.closest('.nav__btn_add')) {
+            showPopup();
+        } else {
+            btnNavActive.classList.remove('active');
+            e.target.closest('.nav__btn').classList.add('active');
+            identifyCurrentLibrary();
+            displayBookCards();
+        }
     }
 }
 
@@ -458,4 +469,13 @@ function removeBookmark(e) {
     book.bookmark = false;
     identifyCurrentLibrary();
     displayBookCards();
+}
+
+function showPopup() {
+    let popup = document.querySelector('.popup');
+    popup.classList.add('popup_active');
+}
+
+function closePopup(e) {
+    e.currentTarget.classList.remove('popup_active');
 }
