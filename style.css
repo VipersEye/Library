@@ -1037,7 +1037,7 @@ h1, h2, h3, h4, h5, h6 {
     visibility: visible;
 }
 
-.popup-textarea,
+.popup__textarea,
 .popup__btn_add {
     grid-column: 1 / -1;
 }
@@ -1132,7 +1132,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #1aa5a5;
 }
 
-.popup-textarea {
+.popup__textarea {
     padding: 1rem;
     max-width: 35rem;
     max-height: 15rem;
