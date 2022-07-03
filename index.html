@@ -246,10 +246,10 @@
         </button>
 
         <label class="popup__label" for="input-title">Title</label>
-        <input class="popup__input" type="text" name="title" id="input-title" required placeholder="1984" minlength="5" maxlength="35">
+        <input class="popup__input" type="text" name="title" id="input-title" required placeholder="1984" minlength="2" maxlength="35">
 
         <label class="popup__label" for="input-author">Author</label>
-        <input class="popup__input" type="text" name="author" id="input-author" required placeholder="George Orwell" minlength="5" maxlength="35">
+        <input class="popup__input" type="text" name="author" id="input-author" required placeholder="George Orwell" minlength="2" maxlength="35">
 
         <label class="popup__label" for="input-pages">Pages</label>
         <input class="popup__input" type="number" name="pages" id="input-pages" required placeholder="227" min="1" max="1000000" step="1">
@@ -260,7 +260,7 @@
         <label class="popup__label" for="input-image">Image</label>
         <input class="popup__input" type="file" name="image" id="input-image" required accept="image/jpeg,image/png,image/gif">
 
-        <textarea class="popup-textarea" name="summary" id="" cols="60" rows="15" required wrap="soft" placeholder="Book's summary..."></textarea>
+        <textarea class="popup-textarea" name="summary" id="" cols="60" rows="15" required wrap="soft" placeholder="Book's summary..." minlength="10"></textarea>
 
         <button class="popup__btn popup__btn_add" type="submit">add</button>
     </form>

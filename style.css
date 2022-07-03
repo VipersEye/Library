@@ -1016,16 +1016,25 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: auto 1fr;
     align-items: center;
     row-gap: 1rem;
-    column-gap: 1.8rem;
+    column-gap: 1.3rem;
 
     padding: 3rem;
 
     color: #fff;
 
-    background-color: rgba(0, 0, 0, 0.97);
+    opacity: 1;
+    /* visibility: hidden; */
+
+    background-color: #000;
     border-radius: 0.7rem;
 
     transform: translate3d(-50%, -50%, 0);
+    transition: opacity 0.2s linear;
+}
+
+.popup_active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .popup-textarea,
@@ -1034,10 +1043,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .popup__label {
+    display: flex;
+    align-items: center;
+
     font-size: 1.3rem;
     color: #fff;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+.popup__label::after {
+    content: '*';
+
+    position: relative;
+    top: -0.3rem;
+
+    display: block;
+    align-self: flex-start;
+    
+    font-family: inherit;
+    font-size: 1.3rem;
+    color: #b00000;
 }
 
 .popup__input {
@@ -1058,13 +1084,17 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
+.popup__input:focus.popup__input:invalid {
+    border-color: #b00000 !important;
+}
+
+.popup__input:valid {
+    border-color: #008000;
+}
+
 .popup__input::placeholder {
     font-family: inherit;
     font-size: 100%;
-}
-
-.popup__input:focus {
-    border-color: var(--main-color);
 }
 
 .popup__input[type='file'] {
