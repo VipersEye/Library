@@ -74,6 +74,12 @@
         </g>
     </symbol>
 
+    <symbol id="close" viewBox="0 0 700 700">
+        <g>
+            <path d="m350 240.4 217.79-217.79 39.598 39.598-217.79 217.79 217.79 217.79-39.598 39.598-217.79-217.79-217.79 217.79-39.598-39.598 217.79-217.79-217.79-217.79 39.598-39.598z"/>
+        </g>
+    </symbol>
+
 </svg>
 
 <div class="container">
@@ -108,7 +114,7 @@
             <h3 class="nav__header">browse</h3>
             <button id="btn-reading" class="nav__btn nav__btn_browse" type="button">now reading</button>
             <div class="nav__btn_browse_bookstore">
-                <button id="btn-bookstore" class="nav__btn nav__btn_browse  active" type="button">bookstore
+                <button id="btn-bookstore" class="nav__btn nav__btn_browse" type="button">bookstore
                 <button class="nav__btn nav__btn_add" type="">
                     <svg class="nav__icon-add">
                         <use xlink:href="#plus"></use>
@@ -116,7 +122,7 @@
                 </button>
             </div>
             </button>
-            <button id="btn-collection" class="nav__btn nav__btn_browse" type="button">collection</button>
+            <button id="btn-collection" class="nav__btn nav__btn_browse active" type="button">collection</button>
             <button class="nav__btn nav__btn_browse" type="button">forum</button>
         </div>
 
@@ -231,6 +237,33 @@
         </div>
         
     </aside>
+
+    <form class="popup">
+        <button class="popup__btn popup__btn_close" type="button">
+            <svg class="popup__icon_close">
+                <use xlink:href="#close"></use>
+            </svg>
+        </button>
+
+        <label class="popup__label" for="input-title">Title</label>
+        <input class="popup__input" type="text" name="title" id="input-title" required placeholder="1984" minlength="5" maxlength="35">
+
+        <label class="popup__label" for="input-author">Author</label>
+        <input class="popup__input" type="text" name="author" id="input-author" required placeholder="George Orwell" minlength="5" maxlength="35">
+
+        <label class="popup__label" for="input-pages">Pages</label>
+        <input class="popup__input" type="number" name="pages" id="input-pages" required placeholder="227" min="1" max="1000000" step="1">
+
+        <label class="popup__label" for="input-year">Year</label>
+        <input class="popup__input" type="number" name="year" id="input-year" required placeholder="1949" min="500" max="2022" step="1">
+
+        <label class="popup__label" for="input-image">Image</label>
+        <input class="popup__input" type="file" name="image" id="input-image" required accept="image/jpeg,image/png,image/gif">
+
+        <textarea class="popup-textarea" name="summary" id="" cols="60" rows="15" required wrap="soft" placeholder="Book's summary..."></textarea>
+
+        <button class="popup__btn popup__btn_add" type="submit">add</button>
+    </form>
 
 </div>
     
