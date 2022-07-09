@@ -415,9 +415,9 @@ function removeBookCards() {
 }
 
 function searchBooks(e) {
-    let searchingValue = e.target.value;
+    let searchingValue = e.target.value.toLowerCase();
     identifyCurrentLibrary();
-    currentLibrary = currentLibrary.filter( book => book.title.includes(searchingValue) || book.author.includes(searchingValue) );
+    currentLibrary = currentLibrary.filter( book => book.title.toLowerCase().includes(searchingValue) || book.author.toLowerCase().includes(searchingValue) );
     displayBookCards();
 }
 
