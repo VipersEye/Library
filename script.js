@@ -141,7 +141,7 @@ let currentUser = {
     id: 0,
     name: 'Nik',
     library: [],
-}
+};
 let currentLibrary;
 
 let blockNav = document.querySelectorAll('.nav__block');
@@ -161,7 +161,11 @@ btnsHeader.forEach(btn => {
 });
 
 document.addEventListener('keypress', (e)=>{
-    if (e.key === 'Enter' && inputAside === document.activeElement && inputAside.value) {
+    if (
+      e.key === 'Enter' 
+      && inputAside === document.activeElement 
+      && inputAside.value !== ''
+    ) {
         let authorAvatar = document.querySelector('.aside__commenting .avatar_aside');
         let avatarSrc = authorAvatar.getAttribute('src');
         addComment(inputAside.value, avatarSrc);
@@ -243,21 +247,23 @@ function displayBookCards() {
     sortBooks(filter);
 
     for (let book of currentLibrary) {
+        let {id, title, author, cover, bookmark} = book;
+
         let bookCard = cardTemplate.content.cloneNode(true).querySelector('.books__card');
         let bookTitle = bookCard.querySelector('.books__name');
         let bookAuthor = bookCard.querySelector('.books__author');
         let bookCover = bookCard.querySelector('.books__img');
-        
-        bookCard.setAttribute('book_id', book.id);
-        bookTitle.textContent = book.title;
-        bookAuthor.textContent = book.author;
-        bookCover.setAttribute('src', book.cover);
+
+        bookCard.setAttribute('book_id', id);
+        bookTitle.textContent = title;
+        bookAuthor.textContent = author;
+        bookCover.setAttribute('src', cover);
 
         if (book['in collection']) {
             let btnAdd = bookCard.querySelector('.books__button_add');
             toggleBtnAddStyles(btnAdd);
         }
-        if (book.bookmark) {
+        if (bookmark) {
             let btnBookmark = bookCard.querySelector('.books__button_bookmark');
             toggleBtnBookmarkStyles(btnBookmark);
         }
@@ -296,12 +302,13 @@ function displayBookInfo(bookCard) {
         let bookInfo = bookInfoTemplate.content.cloneNode(true).querySelector('.books__info');
         let bookId = bookCard.getAttribute('book_id');
         let book = mainLibrary[bookId];
+        let {summary, rating} = book;
         
         let bookInfoSummary = bookInfo.querySelector('.books__summary-text');
-        bookInfoSummary.textContent = book.summary;
+        bookInfoSummary.textContent = summary;
 
         let bookRatingStars = bookInfo.querySelectorAll('.icon_star');
-        for (let i = 0; i < book.rating; i++) {
+        for (let i = 0; i < rating; i++) {
             bookRatingStars[i].classList.add('icon_star_rate');
         }
         if (book['user rating']) {
@@ -340,7 +347,7 @@ function chooseInfoPosition(bookCard, bookInfo) {
         bookInfo.classList.remove('books__info_left');
     } else {
         bookInfo.classList.add('books__info_left');
-        bookInfo.classList.remove('books__info_right')
+        bookInfo.classList.remove('books__info_right');
     }
 }
 
