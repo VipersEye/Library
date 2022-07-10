@@ -388,6 +388,10 @@ function displayUserRating(e) {
         for (let i = 0; i < currentUserRating; i++) {
             bookRatingStars[i].classList.add('icon_star_active');
         }
+
+        for (let i = 4; i > currentUserRating - 1; i--) {
+            bookRatingStars[i].classList.remove('icon_star_active');
+        }
     } else {
         for (let i = 0; i < 5; i++) {
             bookRatingStars[i].classList.remove('icon_star_active');
