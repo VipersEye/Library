@@ -100,7 +100,7 @@
             <button class="header__btn header__btn_popularity active" type="button">popularity</button>
         </div>
         <div class="header__input">
-            <input class="input input_search" type="search" name="search" id="search" placeholder="Search all books">
+            <input class="input input_search" type="search" name="search" id="input-search" placeholder="Search all books">
             <svg class="icon_search">
                 <use xlink:href="#search"></use>
             </svg>
@@ -114,14 +114,13 @@
             <h3 class="nav__header">browse</h3>
             <button id="btn-reading" class="nav__btn nav__btn_browse" type="button">now reading</button>
             <div class="nav__btn_browse_bookstore">
-                <button id="btn-bookstore" class="nav__btn nav__btn_browse active" type="button">bookstore
-                <button class="nav__btn nav__btn_add" type="">
+                <button id="btn-bookstore" class="nav__btn nav__btn_browse active" type="button">bookstore</button>
+                <button class="nav__btn nav__btn_add" type="button">
                     <svg class="nav__icon-add">
                         <use xlink:href="#plus"></use>
                     </svg>
                 </button>
             </div>
-            </button>
             <button id="btn-collection" class="nav__btn nav__btn_browse" type="button">collection</button>
             <button class="nav__btn nav__btn_browse" type="button">forum</button>
         </div>
@@ -136,12 +135,12 @@
         <div class="nav__block">
             <h3 class="nav__header">bookmarks</h3>
             <button class="nav__btn nav__btn_bookmark active" type="button">
-                <div class="nav__book-name">The Great Gatsby</div>
-                <div class="nav__book-author">by F. Scott Fitzgerald</div>
+                <span class="nav__book-name">The Great Gatsby</span>
+                <span class="nav__book-author">by F. Scott Fitzgerald</span>
             </button>
             <button class="nav__btn nav__btn_bookmark" type="button">
-                <div class="nav__book-name">To Kill a Mockingbird</div>
-                <div class="nav__book-author">by Harper Lee</div>
+                <span class="nav__book-name">To Kill a Mockingbird</span>
+                <span class="nav__book-author">by Harper Lee</span>
             </button>
         </div>
     </nav>
@@ -170,7 +169,7 @@
             <div class="aside__discussion-header">
                 <div class="aside__discussion-header-text">discussion</div>
                 <div class="aside__select">
-                    <select class="aside__select-inner" name="" id="">
+                    <select class="aside__select-inner" name="genres" id="select-genres">
                         <option value="fantasy">Fantasy</option>
                         <option value="mystery">Mystery</option>
                         <option value="thriller">Thriller</option>
@@ -190,18 +189,18 @@
 
             <div class="aside__comment-block">
                 <div class="aside__comment">
-                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar1.jpg"></a>
+                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar1.jpg" alt="user avatar"></a>
                     <p class="aside__comment-text">Have you guys read The Lord of the Rings yet?</p>
                 </div>
             </div>
 
             <div class="aside__comment-block">
                 <div class="aside__comment">
-                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar2.jpg"></a>
+                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar2.jpg" alt="user avatar"></a>
                     <p class="aside__comment-text">I'm looking for some new good fantasy books. Anyone around here that recommended me something?</p>
                 </div>
                 <div class="aside__comment">
-                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar3.jpg"></a>
+                    <a href=""><img class="avatar avatar_aside" src="./images/avatars/avatar3.jpg" alt="user avatar"></a>
                     <p class="aside__comment-text">You should try A Clash of Kings by George R.R. Martin.</p>
                 </div>
             </div>
@@ -233,12 +232,12 @@
             <a href="">
                 <img class="avatar avatar_aside" src="./images/avatars/avatar1.jpg" alt="user avatar">
             </a>
-            <input class="input input_aside" type="text" name="" id="" placeholder="Share your thoughts...">
+            <input class="input input_aside" type="text" name="commentary" id="input-commentary" placeholder="Share your thoughts...">
         </div>
         
     </aside>
 
-    <form class="popup" action="" method="post">
+    <form class="popup" action="#" method="post">
         <button class="popup__btn popup__btn_close" type="button">
             <svg class="popup__icon_close">
                 <use xlink:href="#close"></use>
@@ -260,7 +259,7 @@
         <label class="popup__label" for="input-image">Image</label>
         <input class="popup__input" type="file" name="image" id="input-image" required accept="image/jpeg,image/png,image/gif">
 
-        <textarea class="popup__textarea" name="summary" id="" cols="60" rows="15" required wrap="soft" placeholder="Book's summary..."></textarea>
+        <textarea class="popup__textarea" name="summary" id="input-summary" cols="60" rows="15" required wrap="soft" placeholder="Book's summary..."></textarea>
 
         <button class="popup__btn popup__btn_add" type="submit">add</button>
     </form>
